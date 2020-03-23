@@ -1,7 +1,8 @@
-import { FETCH_POSTS, NEW_POST } from '../actions/types';
+import { FETCH_POSTS, NEW_POST, FETCH_USERS } from '../actions/types';
 
 const initialState = {
-  posts: []
+  posts: [],
+  users: []
 };
 
 const postReducer = (state = initialState, action) => {
@@ -18,6 +19,13 @@ const postReducer = (state = initialState, action) => {
         ...state,
         posts: [...state.posts, payload]
       }
+
+      case FETCH_USERS:
+        return {
+          ...state,
+          users: [...state.users, payload]
+        }
+
     default:
       return state;
   };

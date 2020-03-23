@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_POSTS, NEW_POST } from './types';
+import { FETCH_POSTS, NEW_POST, FETCH_USERS } from './types';
 
 export const fetchPosts = () => dispatch => {
   const url = 'https://jsonplaceholder.typicode.com/posts';
@@ -10,6 +10,18 @@ export const fetchPosts = () => dispatch => {
     });
   });
 };
+
+export const fetchUsers = () => dispatch => {
+  const url = 'https://reqres.in/api/users';
+  axios.get(url).then(users => {
+    dispatch({
+      type: FETCH_USERS,
+      payload: users.data.data
+    });
+  });
+};
+
+
 
 export const createPost = postTitle => dispatch => {
   const url = 'https://jsonplaceholder.typicode.com/posts';

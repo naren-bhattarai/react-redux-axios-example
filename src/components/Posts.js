@@ -14,10 +14,10 @@ const Posts = () => {
 
   const store = useSelector(state => state.store);
   let loadPosts;
-
+  
   if (store && store.posts.length > 0) {
     const { posts } = store;
-    loadPosts = posts && posts.map((post) => {
+    loadPosts = posts && posts.slice(0,10).map((post) => {
       const { id, title } = post;
       let num = id < 11 ? `0${ id-1 }` : id-1;
       return (
